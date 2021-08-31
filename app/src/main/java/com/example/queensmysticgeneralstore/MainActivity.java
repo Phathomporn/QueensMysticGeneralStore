@@ -3,7 +3,10 @@ package com.example.queensmysticgeneralstore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.Editable;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
@@ -18,7 +21,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    Editable copyText;
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -33,22 +39,30 @@ public class MainActivity extends AppCompatActivity {
 
                 if(i == EditorInfo.IME_ACTION_DONE) {
                     //copy text in Editor text
-                    tvHello.setText(editTextHello.getText());
+                    copyText = editTextHello.getText();
+                    tvHello.setText(copyText);
+
                     return true;
                 }
                 return false;
             }
         });
 
-        Toast.makeText(MainActivity.this, "DONE", Toast.LENGTH_LONG)
-                .show();
         Button btnCopy = (Button) findViewById(R.id.btnCopy);
         btnCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //copy number to Hello Queen
-                tvHello.setText(editTextHello.getText());
+                copyText = editTextHello.getText();
+                tvHello.setText(copyText);
+
+                Toast.makeText(MainActivity.this,
+                        "" + copyText, Toast.LENGTH_LONG).show();
+                //Call new 2nd activity with COPY button
+                Intent intent = new Intent(MainActivity.this,
+                        SecondActivity.class);
+                intent.putExtra("result", String.valueOf(copyText));
+                startActivity(intent);
             }
         });
     }
