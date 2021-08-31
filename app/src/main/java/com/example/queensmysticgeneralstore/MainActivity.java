@@ -1,16 +1,20 @@
 package com.example.queensmysticgeneralstore;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView tvHello = (TextView) findViewById(R.id.tvHello);
         tvHello.setText("Hello Queens");
-
-        final TextView tvQueens = (TextView) findViewById(R.id.TvQueens);
-        tvQueens.setMovementMethod((LinkMovementMethod.getInstance())); //can click link to web
-        tvQueens.setText(Html.fromHtml("<b>My Queens are back!: </b> <a href=\"https://twitter.com/RVsmtown\">https://twitter.com/RVsmtown</a>"));
 
         final EditText editTextHello = (EditText) findViewById(R.id.editTextHello);
         editTextHello.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Toast.makeText(MainActivity.this, "DONE", Toast.LENGTH_LONG)
+                .show();
         Button btnCopy = (Button) findViewById(R.id.btnCopy);
         btnCopy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +51,21 @@ public class MainActivity extends AppCompatActivity {
                 tvHello.setText(editTextHello.getText());
             }
         });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //inflate menu .xml
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_settings){
+            //Do anything
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ProgressBar
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tvHello"
@@ -14,35 +19,9 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
-    <TextView
-        android:id="@+id/TvQueens"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Queen are backkkkkkk!"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:textColor="#FF1100" />
-
-    <View
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="right|center_vertical"
-        android:background="#ffff00"/>
-
-    <View
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|center_vertical"
-        android:background="#ff1100"/>
-
-    <View
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="#0000ff"/>
     <EditText
         android:id="@+id/editTextHello"
-        android:inputType="number"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
@@ -51,5 +30,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <CheckBox
+        android:text="I agree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:src="@drawable/queen"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
